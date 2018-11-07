@@ -196,7 +196,7 @@ class Collection(Service, CollectionT):
     def _send_changelog(self,
                         key: Any,
                         value: Any,
-                        key_serializer: CodecArg = 'json',
+                        key_serializer: CodecArg = 'raw',
                         value_serializer: CodecArg = 'json') -> None:
         event = current_event()
         if event is None:
@@ -318,7 +318,7 @@ class Collection(Service, CollectionT):
             self._changelog_topic_name(),
             key_type=self.key_type,
             value_type=self.value_type,
-            key_serializer='json',
+            key_serializer='raw',
             value_serializer='json',
             partitions=self.partitions,
             retention=retention,
